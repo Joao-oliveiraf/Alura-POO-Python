@@ -2,7 +2,7 @@
 #  2 - Crie uma classe chamada Restaurante com os atributos nome, categoria, ativo e crie mais 2 atributos. Instancie um restaurante e atribua valores aos seus atributos.
 #  3 - Modifique a classe Restaurante adicionando um construtor que aceita nome e categoria como parâmetros e inicia ativo como False por padrão. Crie uma instância utilizando o construtor.
 #  4 - Adicione um método especial __str__ à classe Restaurante para que, ao imprimir uma instância, seja exibida uma mensagem formatada com o nome e a categoria. Exiba essa mensagem para uma instância de restaurante.
-# TODO 5 - Crie uma classe chamada Cliente e pense em 4 atributos. Em seguida, instancie 3 objetos desta classe e atribua valores aos seus atributos através de um método construtor.
+#  5 - Crie uma classe chamada Cliente e pense em 4 atributos. Em seguida, instancie 3 objetos desta classe e atribua valores aos seus atributos através de um método construtor.
 class Carro:  # 1
     def __init__(self, modelo, cor, ano):
         self.modelo = modelo.title()
@@ -41,8 +41,16 @@ class Restaurante:
     def delivery(self):
         return f'Funcionando' if self._delivery else 'Desativado'
 
+class Cliente:
+    def __init__(self, nome, idade, sexo, salario):
+        self.nome = nome
+        self.idade = idade
+        self.sexo = sexo
+        self.salario = salario
 
+    def __str__(self):
+        return f'Cliente: {self.nome}, {self.idade} anos, sexo: {self.sexo}, remuneração: R${self.salario}'
 
 pizza = Restaurante('pizza', 'Italiana', '91740820')
-
-print(pizza.delivery)
+cliente1 = Cliente('João Pedro', 21, 'Masculino', '0,00')
+print(cliente1)
