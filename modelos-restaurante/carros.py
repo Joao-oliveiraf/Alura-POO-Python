@@ -10,9 +10,10 @@ class Carro:  # 1
         self.ano = int(ano)
 
 
-class Restaurante:
-    def __init__(self, nome, categoria, cep):
-        meus_restaurantes = []
+class Restaurante:  # 2
+    meus_restaurantes = []
+
+    def __init__(self, nome, categoria, cep):  # 3
         self.nome = nome
         self.categoria = categoria
         self._ativo = False
@@ -29,17 +30,27 @@ class Restaurante:
                     return ''.join(endereco)
 
         self.cep = tratar(cep)  # 91740-820
-        meus_restaurantes.append(self)
+        Restaurante.meus_restaurantes.append(self)
 
-    def __str__(self):
-        return f'{self.nome} - {self.categoria}'
+    def __str__(self):  # 3
+        return f'{self.nome} - {self.categoria} - {self.cep}'
+
+    @classmethod
+    def listar_restaurantes(cls):
+        for rest in cls.meus_restaurantes:
+            print(f'{rest.nome} - {rest.cep} - {rest.ativo}')
 
     @property
     def ativo(self):
         return f'Funcionando' if self._ativo else 'Desativado!'
+
     @property
     def delivery(self):
         return f'Funcionando' if self._delivery else 'Desativado'
+
+    def alternar_estado(self):
+        self._ativo = not self._ativo
+
 
 class Cliente:
     def __init__(self, nome, idade, sexo, salario):
@@ -51,6 +62,8 @@ class Cliente:
     def __str__(self):
         return f'Cliente: {self.nome}, {self.idade} anos, sexo: {self.sexo}, remuneração: R${self.salario}'
 
+
 pizza = Restaurante('pizza', 'Italiana', '91740820')
+pizza.alternar_estado()
 cliente1 = Cliente('João Pedro', 21, 'Masculino', '0,00')
-print(cliente1)
+Restaurante.listar_restaurantes()
