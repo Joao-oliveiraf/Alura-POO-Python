@@ -1,13 +1,14 @@
-from restaurante import *
-from cardapio.bebida import Bebida
-from cardapio.prato import Prato
+from modelos.restaurante import *
+from modelos.cardapio.bebida import Bebida
+
+
 
 
 rest_pplace = Restaurante('Pizza Place', 'Italiana')
 rest_mcd = Restaurante('McDonalds', 'Fast Food')
 
 def main():
-    print(Restaurante.meus_rest())
+    print(suco)
 
 if __name__ == '__main__':
     main()
