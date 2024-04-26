@@ -1,7 +1,6 @@
 from restaurante import *
-from cardapio.item_cardapio import *
-from cardapio.bebida import *
-from cardapio.prato import *
+from cardapio.bebida import Bebida
+from cardapio.prato import Prato
 
 
 rest_pplace = Restaurante('Pizza Place', 'Italiana')
