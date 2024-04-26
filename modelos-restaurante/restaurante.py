@@ -33,8 +33,4 @@ class Restaurante:
         for i in Restaurante.restaurantes:
             print(f'{i.nome}, {i.categoria}, {i.status()}')
 
-rest_pplace = Restaurante('Pizza Place', 'Italiana')
-rest_mcd = Restaurante('McDonalds', 'Fast Food')
-
-print(Restaurante.meus_rest())
 
