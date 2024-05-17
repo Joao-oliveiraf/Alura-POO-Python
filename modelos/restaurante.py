@@ -5,7 +5,7 @@ from item_cardapio import *
 class Restaurante:
     restaurantes = []
 
-    def __init__(self, nome, categoria):
+    def __init__(self, nome: str, categoria: str):
         self.nome = nome
         self.categoria = categoria
         self.avaliacao = []
@@ -25,7 +25,7 @@ class Restaurante:
         else:
             return 'Restaurante Inativo!'
 
-    def receber_avaliacao(self, cliente, nota):
+    def receber_avaliacao(self, cliente: str, nota: int):
         if 0 < nota < 5:
             avaliador = Avaliacao(cliente, nota)
             self.avaliacao.append(avaliador._nota)
@@ -36,13 +36,8 @@ class Restaurante:
         else:
             return f"{sum(self.avaliacao) / len(self.avaliacao):.1f}"
 
-    def add_prato_cardapio(self, nome, preco, descricao):
-        novo_prato = Prato(nome, preco, descricao)
-        self.cardapio.append(novo_prato)
-
-    def add_bebida_cardapio(self, nome, preco, tamanho):
-        novo_bebida = Bebida(nome, preco, tamanho)
-        self.cardapio.append(novo_bebida)
+    def add_item_cardapio(self, item: object):
+        self.cardapio.append(item)
 
     @classmethod
     def meus_rest(cls):
@@ -53,6 +48,11 @@ class Restaurante:
         print(f'Menu do restaurante: {self.nome}')
         for pratos in self.cardapio:
             if pratos.__class__ == Prato:
-                print(pratos.nome.title(), pratos.preco, pratos.descricao.title())
+                msg = f"{pratos.nome.title()} - R${pratos.preco:.2f} - {pratos.descricao.title()}"
+                print(msg.replace(".", ","))
+            elif pratos.__class__ == Bebida:
+                msg = f"{pratos.nome.title()} - R${pratos.preco:.2f} - {pratos.tamanho.title()}"
+                print(msg.replace(".", ","))
             else:
-                print(pratos.nome.title(), pratos.preco, pratos.tamanho.title())
+                msg = f"{pratos.nome.title()} - R${pratos.preco:.2f} - {pratos.tipo.title()} - {pratos.tamanho.title()}"
+                print(msg.replace(".", ","))
